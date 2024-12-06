@@ -2,24 +2,41 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.Audio;
+
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] int methodCallDelay;
 
+    [SerializeField] AudioClip crashSound;
+    [SerializeField] AudioClip successSound;
+
+    private AudioSource audioSource;
+    private bool isControllable = true;
+
+    void Start(){
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void OnCollisionEnter(Collision other){
+        if (!isControllable){
+            return;
+        }
+
         switch (other.gameObject.tag){
-            case "Start": 
-                Debug.Log("Currently at start"); 
+            case "Start":  
                 break;
-            case "Fuel": // this will most probably never be executed
+            case "Fuel": // this will never be executed
                 other.gameObject.SetActive(false);
-                Debug.Log("Collected Fuel");
                 break;
             case "Finish":
-                Debug.Log("You have finished this level!!!");
+                isControllable = false;
+                audioSource.PlayOneShot(successSound);
                 StartSequence("NextLevel");
                 break;
             default:
+                isControllable = false;
+                audioSource.PlayOneShot(crashSound);
                 StartSequence("RepeatLevel");
                 break;
         }
@@ -40,11 +57,13 @@ public class CollisionHandler : MonoBehaviour
         }
 
         SceneManager.LoadScene(level);
+        isControllable = true;
     }
 
     void RepeatLevel()
     {
         int level = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(level);
+        isControllable = true;
     }
 }

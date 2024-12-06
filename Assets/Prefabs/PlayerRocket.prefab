@@ -258,7 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 990baccf3afe2da44b5eb80576d390aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  methodCallDelay: 4
+  methodCallDelay: 2
+  crashSound: {fileID: 8300000, guid: 4b07430e9d283a64d9efa1b7277eaa59, type: 3}
+  successSound: {fileID: 8300000, guid: dc5195d209ab23b45961d91e5f5d29bc, type: 3}
 --- !u!1001 &3200278438876983377
 PrefabInstance:
   m_ObjectHideFlags: 0
