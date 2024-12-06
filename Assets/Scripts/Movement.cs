@@ -34,39 +34,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other){
-        switch (other.gameObject.tag){
-            case "Start": 
-                Debug.Log("Currently at start"); 
-                break;
-            case "Fuel": // this will most probably never be executed
-                other.gameObject.SetActive(false);
-                Debug.Log("Collected Fuel");
-                break;
-            case "Finish":
-                Debug.Log("You have finished this level!!!");
-                NextLevel();
-                break;
-            default:
-                RepeatLevel();
-                break;
-        }
-    }
-
-    void NextLevel()
-    {
-        int level = SceneManager.GetActiveScene().buildIndex;
-        level += 1;
-
-        SceneManager.LoadScene(level);
-    }
-
-    void RepeatLevel()
-    {
-        int level = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(level);
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

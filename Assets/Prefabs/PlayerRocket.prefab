@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7225854744829960637}
-  - component: {fileID: 3260330624364136127}
   - component: {fileID: 1455085894668939035}
   - component: {fileID: 4047922111144270514}
   - component: {fileID: 115677097472578602}
   - component: {fileID: 3630845114374684541}
+  - component: {fileID: 578801676381998079}
   m_Layer: 0
   m_Name: PlayerRocket
   m_TagString: Untagged
@@ -37,46 +37,6 @@ Transform:
   - {fileID: 8424141284733093871}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 1.09, y: 7.934, z: 0.342}
---- !u!114 &3260330624364136127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2287909409759902455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ae369cf4525744293874cea12fd099, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust:
-    m_Name: Thrust
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: 5369f6b5-88c3-45cd-a41d-4ff44081621a
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 197e0f50-9f54-4e32-9be3-4167c4d85eb8
-      m_Path: <Keyboard>/space
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Thrust
-      m_Flags: 0
-    m_Flags: 0
-  rotation:
-    m_Name: Rotation
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 52c0d3fa-f2fd-4cec-9d1f-148a70e94ffc
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  thrustStrength: 0
-  rotationStrength: 0
 --- !u!65 &1455085894668939035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -286,6 +246,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &578801676381998079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2287909409759902455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990baccf3afe2da44b5eb80576d390aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  methodCallDelay: 4
 --- !u!1001 &3200278438876983377
 PrefabInstance:
   m_ObjectHideFlags: 0
