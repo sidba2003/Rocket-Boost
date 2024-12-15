@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-using UnityEngine.Audio;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class CollisionHandler : MonoBehaviour
 
     [SerializeField] AudioClip crashSound;
     [SerializeField] AudioClip successSound;
+    [SerializeField] ParticleSystem crashParticles;
+    [SerializeField] ParticleSystem successParticles;
 
     private AudioSource audioSource;
     private bool isControllable = true;
@@ -32,11 +33,13 @@ public class CollisionHandler : MonoBehaviour
             case "Finish":
                 isControllable = false;
                 audioSource.PlayOneShot(successSound);
+                successParticles.Play();
                 StartSequence("NextLevel");
                 break;
             default:
                 isControllable = false;
                 audioSource.PlayOneShot(crashSound);
+                crashParticles.Play();
                 StartSequence("RepeatLevel");
                 break;
         }

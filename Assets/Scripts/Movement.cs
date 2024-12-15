@@ -10,6 +10,10 @@ public class Movement : MonoBehaviour
     [SerializeField] float thrustStrength;
     [SerializeField] float rotationStrength;
 
+    [SerializeField] ParticleSystem mainBooster;
+    [SerializeField] ParticleSystem leftBooster;
+    [SerializeField] ParticleSystem rightBooster;
+
     private AudioSource audioSource;
     Rigidbody rb;
 
@@ -39,6 +43,7 @@ public class Movement : MonoBehaviour
     {
         applyThrust();
         applyRotation();
+        applyBoosterEffects();
     }
 
     void applyThrust()
@@ -56,5 +61,31 @@ public class Movement : MonoBehaviour
     void applyRotation()
     {
         rb.AddRelativeTorque(Vector3.right * Time.fixedDeltaTime * rotation.ReadValue<float>() * rotationStrength);
+    }
+
+    void applyBoosterEffects(){
+        if (thrust.IsPressed()){
+            if (!mainBooster.isPlaying){
+                mainBooster.Play();
+            }
+        } else{
+            mainBooster.Stop();
+        }
+
+        if (rotation.ReadValue<float>() < 0){
+            if (!rightBooster.isPlaying){
+                rightBooster.Play();
+            }
+        } else {
+            rightBooster.Stop();
+        }
+
+        if (rotation.ReadValue<float>() > 0){
+            if (!leftBooster.isPlaying){
+                leftBooster.Play();
+            }
+        } else {
+            leftBooster.Stop();
+        } 
     }
 }
