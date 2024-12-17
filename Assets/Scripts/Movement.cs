@@ -1,6 +1,10 @@
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
@@ -60,7 +64,7 @@ public class Movement : MonoBehaviour
 
     void applyRotation()
     {
-        rb.AddRelativeTorque(Vector3.right * Time.fixedDeltaTime * rotation.ReadValue<float>() * rotationStrength);
+        rb.AddRelativeTorque(Vector3.forward * Time.fixedDeltaTime * rotation.ReadValue<float>() * rotationStrength);
     }
 
     void applyBoosterEffects(){
@@ -79,7 +83,7 @@ public class Movement : MonoBehaviour
         } else {
             rightBooster.Stop();
         }
-
+        
         if (rotation.ReadValue<float>() > 0){
             if (!leftBooster.isPlaying){
                 leftBooster.Play();
