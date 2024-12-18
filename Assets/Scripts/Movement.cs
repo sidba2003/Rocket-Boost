@@ -35,8 +35,9 @@ public class Movement : MonoBehaviour
 
 
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("Colided with " + other.gameObject.tag);
         switch (other.gameObject.tag){
-            case "Fuel":
+            case "GoldCoin_Collectible":
                 other.gameObject.SetActive(false);
                 break;
         }

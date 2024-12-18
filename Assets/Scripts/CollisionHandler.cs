@@ -42,6 +42,8 @@ public class CollisionHandler : MonoBehaviour
         switch (other.gameObject.tag){
             case "Start":  
                 break;
+            case "jumppad":
+                break;
             case "Finish":
                 isControllable = false;
                 audioSource.PlayOneShot(successSound);

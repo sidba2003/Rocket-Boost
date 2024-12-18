@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Start
   - Fuel
+  - GoldCoin_Collectible
   layers:
   - Default
   - TransparentFX
